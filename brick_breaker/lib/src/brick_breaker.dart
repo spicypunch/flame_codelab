@@ -4,7 +4,7 @@ import 'dart:math' as math;
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'components/components.dart';
@@ -26,7 +26,7 @@ class BrickBreaker extends FlameGame
   double get height => size.y;
 
   late PlayState _playState;
-  PlayState get playSate => _playState;
+  PlayState get playState => _playState;
   set playState(PlayState playState) {
     _playState = playState;
     switch (playState) {
