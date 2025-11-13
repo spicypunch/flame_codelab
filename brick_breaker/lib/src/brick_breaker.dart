@@ -21,12 +21,18 @@ class BrickBreaker extends FlameGame
           height: gameHeight,
         ),
       );
+
+  final ValueNotifier<int> score = ValueNotifier(0);
   final rand = math.Random();
+
   double get width => size.x;
+
   double get height => size.y;
 
   late PlayState _playState;
+
   PlayState get playState => _playState;
+
   set playState(PlayState playState) {
     _playState = playState;
     switch (playState) {
@@ -59,7 +65,8 @@ class BrickBreaker extends FlameGame
     world.removeAll(world.children.query<Bat>());
     world.removeAll(world.children.query<Brick>());
 
-    playState = PlayState.playing;                              // To here.
+    playState = PlayState.playing;
+    score.value = 0;
 
     world.add(
       Ball(
@@ -81,7 +88,8 @@ class BrickBreaker extends FlameGame
       ),
     );
 
-    world.addAll([                                              // Drop the await
+    world.addAll([
+      // Drop the await
       for (var i = 0; i < brickColors.length; i++)
         for (var j = 1; j <= 5; j++)
           Brick(
